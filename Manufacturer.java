@@ -1,8 +1,7 @@
 
-//
 class Manufacturer {
-    String name;
-    Address address;
+    private String name;
+    private Address address;
 
     public Manufacturer() {
         this.name = "";

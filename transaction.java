@@ -1,22 +1,24 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 class Transaction {
-    Product product;
-    String purchaseDate;
+    private Product product;
+    private Date transactionDate;
 
     public Transaction() {
         this.product = new Product();
-        this.purchaseDate = "";
+        this.transactionDate = new Date();
     }
-    public Transaction(Product product, String purchaseDate) {
+    public Transaction(Product product, Date transactionDate) {
         this.product = product;
-        this.purchaseDate = purchaseDate;
+        this.transactionDate = transactionDate;
     }
 
-    public void setPurchaseDate(String purchaseDate) {
-        this.purchaseDate = purchaseDate;
+    public void setTransactionDate(Date transactionDate) {
+        this.transactionDate = transactionDate;
     }
-    public String getPurchaseDate() {
-        return this.purchaseDate;
+    public String getTransactionDate() {
+        return new SimpleDateFormat("MM-dd-yyyy").format(transactionDate);
     }
 
     public void setProduct (Product product) {

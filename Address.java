@@ -1,6 +1,6 @@
 
 class Address {
-    String state;
+    private String state;
 
     public Address() {
         this.state = "";

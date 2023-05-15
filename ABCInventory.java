@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ABCInventory {
     static ArrayList<Product> activeProducts = new ArrayList<Product>();
@@ -94,10 +95,8 @@ public class ABCInventory {
 
         if (productToRemove != null) {
             System.out.println("Requested product found.");
-            System.out.println("Please enter the removal date:");
-            String removalDate = input.nextLine();
             activeProducts.remove(productToRemove);
-            inactiveProducts.add(new Transaction(productToRemove, removalDate));
+            inactiveProducts.add(new Transaction(productToRemove, new Date()));
         } else {
             System.out.println("No product found with that name.");
         }
@@ -142,7 +141,7 @@ public class ABCInventory {
         System.out.println("Product Date Manufacturer");
 
         for (Transaction transaction : inactiveProducts) {
-            System.out.println(transaction.getProduct().getProductName() + " " + transaction.getPurchaseDate() + " " + transaction.getProduct().getManufacturerName());
+            System.out.println(transaction.getProduct().getProductName() + " " + transaction.getTransactionDate() + " " + transaction.getProduct().getManufacturerName());
         }
     }
 
@@ -167,8 +166,6 @@ public class ABCInventory {
         for (Product product : activeProducts) {
             if (product.getProductName().compareTo(productName) == 0) {
                 System.out.println("Requested product found.");
-                System.out.println("Please enter the purchase date:");
-                String purchaseDate = input.nextLine();
                 System.out.println("Please enter the quantity:");
                 Integer quantity = input.nextInt();
                 input.nextLine();
@@ -179,7 +176,7 @@ public class ABCInventory {
                 }
 
                 product.setQuantity(product.getQuantity() - quantity);
-                Transaction transaction = new Transaction(product.Clone(), purchaseDate);
+                Transaction transaction = new Transaction(product.Clone(), new Date());
                 transactions.add(transaction);
                 return;
             }
@@ -210,7 +207,7 @@ public class ABCInventory {
         System.out.println("Product Purchase Date Quantity Price Manufacturer State");
 
         for (Transaction transaction : transactions) {
-            System.out.println(transaction.getProduct().getProductName() + " " + transaction.getPurchaseDate() + " " + transaction.getProduct().getQuantity() + " " + transaction.getProduct().getUnitPrice() + " " + transaction.getProduct().getManufacturerName() + " " + transaction.getProduct().getManufacturerAddress());
+            System.out.println(transaction.getProduct().getProductName() + " " + transaction.getTransactionDate() + " " + transaction.getProduct().getQuantity() + " " + transaction.getProduct().getUnitPrice() + " " + transaction.getProduct().getManufacturerName() + " " + transaction.getProduct().getManufacturerAddress());
         }
     }
 }

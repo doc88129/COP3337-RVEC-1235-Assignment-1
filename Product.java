@@ -1,9 +1,9 @@
 
 class Product {
-    Manufacturer manufacturer;
-    String productName;
-    Integer quantity;
-    Double unitPrice;
+    private Manufacturer manufacturer;
+    private String productName;
+    private Integer quantity;
+    private Double unitPrice;
 
     public Product() {
         this.manufacturer = new Manufacturer();
